@@ -5,7 +5,7 @@ try {
     let task = await Task.create({
         description: req.body.description,
         category : req.body.category,
-        date : req.body.date
+        priority : req.body.priority
       });
     
     return res.redirect('back');
@@ -19,7 +19,6 @@ module.exports.deleteTask = async function(req,res){
     try {
         let task = await Task.findById(req.params.id);
          task.remove();
-         console.log("task deleted",task);
          return res.redirect('back');
   
     } catch (error) {

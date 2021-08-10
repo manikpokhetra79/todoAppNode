@@ -4,23 +4,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+<title><%= title %></title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+<!-- bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/home.css">
 </head>
-<body>
-   <main>
-<header>
-<h1>TODO APP</h1>
-</header>
-<div id="todo-container">
-    <form id="todo-form" action="/tasks/add" method="POST">
-        <div id="Enter-description">
+    <body class="container">
+    <main>
+    <header>
+    <div class="container col-lg-10 mt-5">
+    <h1>TODO APP</h1>
+    </div>
+    </header>
+    <div id="todo-container" class="container">
+        <form id="todo-form" action="/tasks/add" method="POST">
+         <div class="row">
+             <div class="col-lg-10 col-md-8">
+            <div id="Enter-description">
             <label for="fill-description">DESCRIPTION</label></br>
-            <input type="text" id="fill-description" name="description" placeholder="Enter your todo task" required>
+            <input class="form-control" type="text" id="fill-description" name="description" placeholder="Enter your todo task" required>
+            </div>
+            </div>
         </div>
-        <div id="select-Category" >
-            <p>CATEGORY</p>
-            <select name="category"required>
+    <div class="row  mt-2">
+        <div class="col-lg-5 col-md-4">   
+            <div id="select-Category" >
+             <label for="category">CATEGORY</label>
+            <select class="form-select"  name="category"required>
                 <option selected>Choose a category</option>
                 <option value="Personal">Personal</option>
                 <option value="home">Home</option>
@@ -28,27 +39,55 @@
                 <option value="Office">Office</option>
                 <option value="Other">Other</option>
             </select>
+            </div>
         </div>
-        <div id="fill-date">
-            <p>DUE DATE</p></br>
-            <input type="date" id="due-date" name="date" required>
+        <div class="col-lg-5 col-md-4"> 
+        <div id="priority-select">
+            <label for="priority">Priority</label>
+            <select class="form-select" name="priority"required>
+                <option selected>Choose a Priority</option>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+                <option value="urgent">Urgent</option>
+            </select>
         </div>
-        <input type="submit" value="Submit">
+    </div>        
+    </div>
+    <div class="row">
+        <div class="col-md-10">
+            <input class="btn btn-success form-control mt-4" type="submit" value="Submit Task">
+        </div>
+    </div>
     </form>
     <!-- buttons -->
     <!-- task list -->
-</div>
-<div id= "task-list-container">
+    </div>
+    <div id= "task-list-container">
     <ul id="tasks-list">
-        <% for(let task of tasks){%>
-        <li id="task-<%=task._id%>">
-            <p><%=task.description%></p>
-            <p><%=task.category%></p>
-            <a href="/tasks/delete/<%=task._id%>"><button>Delete</button></a>
-        </li>    
-        <%}%>
+    <% for(let task of tasks){%>
+        <li class="mt-4 task-li"id="task-<%=task._id%>">
+        <div class="container">
+            <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="card" style="width: 22rem;">
+                    <div class="card-body">
+                      <h5 class="card-title">Category : <%=task.category%></h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Prioirty : <strong><%=task.priority%></strong></h6>
+                      <p class="task-desc" class="card-text"><%=task.description%></p>
+                      <a href="/tasks/delete/<%=task._id%>" class="card-link"> <button type="button" class="btn btn-danger">Delete</button></a>
+                    </div>
+                  </div>
+            </div>
+            </div>
+        </div>
+        </li>   
+        
+    <%}%>
     </ul>
-</div>
-   </main>
-</body>
+    </div>
+    </main>
+    <!-- script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    </body>
 </html>

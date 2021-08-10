@@ -10,8 +10,8 @@ const tasksSchema = new mongoose.Schema({
         type : String,
         required: true
     },
-    date:{
-        type: Date,
+    priority:{
+        type: String,
         required:true
     }
 });

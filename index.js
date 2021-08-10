@@ -9,7 +9,7 @@ const ejs = require('ejs');
 app.use(express.urlencoded());
 app.set('views',path.join(__dirname,'views'));
 app.set('view engine','ejs');
-
+app.use(express.static('./assets'))
 app.use('/',require('./routers/index'));
 
  app.listen(port,function(err){
