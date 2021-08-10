@@ -33,25 +33,20 @@
             <p>DUE DATE</p></br>
             <input type="date" id="due-date" name="date" required>
         </div>
+        <input type="submit" value="Submit">
     </form>
     <!-- buttons -->
-    <div id="buttons">
-        <a href="/tasks/add" >
-            <i class="fas fa-plus"></i>&ensp;
-            ADD TASK
-        </a>
-
-        <a href="/tasks/delete" >
-            <i class="fas fa-trash"></i>&ensp;
-            DELETE TASK
-        </a>
-    </div>
     <!-- task list -->
 </div>
-
 <div id= "task-list-container">
     <ul id="tasks-list">
-        
+        <% for(let task of tasks){%>
+        <li id="task-<%=task._id%>">
+            <p><%=task.description%></p>
+            <p><%=task.category%></p>
+            <a href="/tasks/delete/<%=task._id%>"><button>Delete</button></a>
+        </li>    
+        <%}%>
     </ul>
 </div>
    </main>

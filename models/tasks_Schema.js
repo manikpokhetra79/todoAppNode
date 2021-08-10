@@ -11,7 +11,7 @@ const tasksSchema = new mongoose.Schema({
         required: true
     },
     date:{
-        type:Date,
+        type: Date,
         required:true
     }
 });
